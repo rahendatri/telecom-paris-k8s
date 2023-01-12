@@ -36,6 +36,18 @@ spec:
               name: mongodb
               key: password
               optional: false
+        - name: ME_CONFIG_BASICAUTH_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-express
+              key: admin-username
+              optional: false
+        - name: ME_CONFIG_BASICAUTH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-express
+              key: admin-password
+              optional: false
         - name: ME_CONFIG_MONGODB_SERVER
           valueFrom:
             configMapKeyRef:
@@ -165,6 +177,16 @@ type: Opaque
 data:
   username: "YWRtaW4="
   password: "dGVsZWNvbV9wYXJpcw=="
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-express
+type: Opaque
+data:
+  admin-username: "YWRtaW4="
+  admin-password: "bW9uZ28tZXhwcmVzcw=="
 
 ---
 apiVersion: v1
