@@ -163,8 +163,8 @@ metadata:
   name: mongodb
 type: Opaque
 data:
-  username: "admin"
-  password: "telecom_paris"
+  username: "YWRtaW4="
+  password: "dGVsZWNvbV9wYXJpcw=="
 
 ---
 apiVersion: v1
