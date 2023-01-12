@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: telecom-training-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # Specify which Ingress Controller to be used
+  ingressClassName: nginx
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: telecom-training-cip
+            port:
+              # Exposed service port
+              number: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: telecom-training
+  name: telecom-training-cip
+  namespace: default
+spec:
+  ports:
+  - # Exposed service port
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: telecom-training
+
