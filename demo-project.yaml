@@ -6,17 +6,10 @@ metadata:
   name: mongo-express
   namespace: default
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: mongo-express
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 0%
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -56,15 +49,14 @@ spec:
 
 ---
 apiVersion: apps/v1
-kind: Deployment                                                                                                                                                                              
+kind: Deployment
 metadata:
+  labels:
     app: mongo-db
   name: mongo-db
   namespace: default
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: mongo-db
