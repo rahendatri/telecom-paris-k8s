@@ -181,7 +181,7 @@ metadata:
   name: mongo-db
 data:
   # property-like keys; each key maps to a simple value
-  db_url: "mongodb.com"
+  db_url: "mongodb://admin:telecom-paris@mongo-db-cip:27017/"
   
 
 
